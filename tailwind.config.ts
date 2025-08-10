@@ -1,20 +1,14 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: ["class"],
+import type { Config } from 'tailwindcss'
+
+export default {
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
+  darkMode: 'class',
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -30,18 +24,18 @@ module.exports = {
           200: "hsl(220, 100%, 87%)",
           300: "hsl(220, 100%, 78%)",
           400: "hsl(220, 100%, 66%)",
-          500: "hsl(220, 100%, 50%)", // #0066FF
+          500: "hsl(220, 100%, 50%)",
           600: "hsl(220, 100%, 45%)",
           700: "hsl(220, 100%, 39%)",
           800: "hsl(220, 100%, 31%)",
-          900: "hsl(220, 100%, 24%)", // #004BD9
+          900: "hsl(220, 100%, 24%)",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
         success: {
-          DEFAULT: "hsl(158, 64%, 52%)", // #10B981
+          DEFAULT: "hsl(158, 64%, 52%)",
           foreground: "hsl(158, 64%, 98%)",
           50: "hsl(158, 64%, 95%)",
           100: "hsl(158, 64%, 89%)",
@@ -49,13 +43,13 @@ module.exports = {
           300: "hsl(158, 64%, 65%)",
           400: "hsl(158, 64%, 52%)",
           500: "hsl(158, 64%, 42%)",
-          600: "hsl(158, 64%, 35%)", // #047857
+          600: "hsl(158, 64%, 35%)",
           700: "hsl(158, 64%, 28%)",
           800: "hsl(158, 64%, 22%)",
           900: "hsl(158, 64%, 16%)",
         },
         warning: {
-          DEFAULT: "hsl(38, 92%, 50%)", // #F59E0B
+          DEFAULT: "hsl(38, 92%, 50%)",
           foreground: "hsl(38, 92%, 5%)",
           50: "hsl(38, 92%, 95%)",
           100: "hsl(38, 92%, 90%)",
@@ -63,13 +57,13 @@ module.exports = {
           300: "hsl(38, 92%, 70%)",
           400: "hsl(38, 92%, 60%)",
           500: "hsl(38, 92%, 50%)",
-          600: "hsl(38, 92%, 45%)", // #D97706
+          600: "hsl(38, 92%, 45%)",
           700: "hsl(38, 92%, 40%)",
           800: "hsl(38, 92%, 30%)",
           900: "hsl(38, 92%, 20%)",
         },
         destructive: {
-          DEFAULT: "hsl(0, 84%, 60%)", // #EF4444
+          DEFAULT: "hsl(0, 84%, 60%)",
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
@@ -120,5 +114,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  plugins: [],
+} satisfies Config
