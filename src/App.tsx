@@ -31,6 +31,8 @@ import { Tasks } from './pages/dashboard/task'
 import { Boards } from './pages/dashboard/boards'
 import { Profile } from './pages/dashboard/profile'
 import { NotFound } from './pages/not-found'
+import { BoardDetail } from './pages/dashboard/board-detail'
+import { Users } from './pages/dashboard/users'
 
 // Create query client
 const queryClient = new QueryClient({
@@ -75,6 +77,8 @@ function App() {
                 <Route index element={<Dashboard />} />
                 <Route path="tasks" element={<Tasks />} />
                 <Route path="boards" element={<Boards/>} />
+                  <Route path="boards/:boardId" element={<BoardDetail />} />
+                  <Route path="users" element={<Users />} />
                 <Route path="profile" element={<Profile/>} />
               </Route>
 

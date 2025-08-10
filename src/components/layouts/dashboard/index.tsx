@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Outlet } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useUIStore } from '@/stores/ui-store'
