@@ -194,10 +194,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
                 className="flex items-center gap-2"
               >
                 <div className="flex items-center justify-center w-8 h-8 rounded-lg gradient-primary">
-                  <span className="text-sm font-bold text-white">P</span>
+                  <span className="text-sm font-bold text-white">TM</span>
                 </div>
                 <span className="text-lg font-semibold text-transparent bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text">
-                  PackAI
+                  Task Management
                 </span>
               </motion.div>
             )}

@@ -36,11 +36,11 @@ export const AuthLayout = () => {
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
               className="flex items-center justify-center w-12 h-12 mx-auto rounded-full gradient-primary"
             >
-              <span className="text-xl font-bold text-white">P</span>
+              <span className="text-xl font-bold text-white">TM</span>
             </motion.div>
             <div>
               <CardTitle className="text-2xl font-bold text-transparent bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text">
-                PacK AI
+                Task Managemet
               </CardTitle>
               <CardDescription className="text-muted-foreground">
                 Streamline your productivity
