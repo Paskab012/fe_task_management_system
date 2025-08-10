@@ -21,6 +21,7 @@ import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import { useAuthStore } from '@/stores/auth-store'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { CreateTaskModal } from '@/components/molecules'
 
 interface SidebarProps {
   collapsed: boolean
@@ -54,7 +55,7 @@ const navigationItems: NavItem[] = [
     title: 'Boards',
     href: '/dashboard/boards',
     icon: Trello,
-    roles: ['super_admin', 'admin', 'user'],
+    roles: ['super_admin', 'admin', 'user', 'guest'],
   },
   {
     title: 'Notifications',
@@ -68,7 +69,7 @@ const navigationItems: NavItem[] = [
 const adminItems: NavItem[] = [
   {
     title: 'User Management',
-    href: '/admin/users',
+    href: '/dashboard/users',
     icon: Users,
     roles: ['super_admin', 'admin'],
   },
@@ -97,10 +98,10 @@ const SidebarItem: React.FC<{
   collapsed: boolean
   userRole: string
 }> = ({ item, collapsed, userRole }) => {
-  const location = useLocation()
-  const isActive = location.pathname === item.href || location.pathname.startsWith(item.href + '/')
+  // const userRole = user?.role || 'user'
+  // const location = useLocation()
+  // const isActive = location.pathname === item.href || location.pathname.startsWith(item.href + '/')
 
-  // Check if user has permission to see this item
   if (item.roles && !item.roles.includes(userRole)) {
     return null
   }
@@ -166,6 +167,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
   const userRole = user?.role || 'user'
   const isAdmin = ['super_admin', 'admin'].includes(userRole)
 
+    const [isCreateTaskModalOpen, setIsCreateTaskModalOpen] = React.useState(false)
+
+    const handleNewTask = () => {
+    setIsCreateTaskModalOpen(true)
+  }
+
+
   return (
     <TooltipProvider>
       <motion.aside
@@ -186,10 +194,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
                 className="flex items-center gap-2"
               >
                 <div className="flex items-center justify-center w-8 h-8 rounded-lg gradient-primary">
-                  <span className="text-sm font-bold text-white">T</span>
+                  <span className="text-sm font-bold text-white">P</span>
                 </div>
                 <span className="text-lg font-semibold text-transparent bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text">
-                  TaskFlow
+                  PackAI
                 </span>
               </motion.div>
             )}
@@ -229,6 +237,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
                 'w-full gap-2 shadow-sm',
                 collapsed && 'h-8 w-8 p-0'
               )}
+              onClick={handleNewTask}
             >
               <Plus className="w-4 h-4 shrink-0" />
               {!collapsed && <span>New Task</span>}
@@ -291,6 +300,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
           />
         </div>
       </motion.aside>
+         <CreateTaskModal
+          open={isCreateTaskModalOpen}
+          onClose={() => setIsCreateTaskModalOpen(false)} 
+      />
     </TooltipProvider>
   )
 }
